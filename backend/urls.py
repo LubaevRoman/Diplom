@@ -1,9 +1,14 @@
 from django.urls import path
 from django_rest_passwordreset.views import reset_password_request_token, reset_password_confirm
+from drf_spectacular.views import SpectacularSwaggerView, SpectacularAPIView
+
 from .views import PartnerUpdate, RegisterUser, LoginUser, CategoryView, ShopView, ProductInfoView, \
     BasketView, \
     UserDetails, ContactView, OrderView, PartnerState, PartnerOrders, ConfirmUser
 from rest_framework.routers import DefaultRouter
+
+from baton.autodiscover import admin
+from django.urls import path, include
 
 r = DefaultRouter()
 r.register('products', ProductInfoView)
@@ -25,4 +30,8 @@ urlpatterns += [
     path('shops', ShopView.as_view(), name='shops'),
     path('basket', BasketView.as_view(), name='basket'),
     path('order', OrderView.as_view(), name='order'),
+    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
+    path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='docs'),
+    path('admin/', admin.site.urls),
+    path('baton/', include('baton.urls')),
 ]
