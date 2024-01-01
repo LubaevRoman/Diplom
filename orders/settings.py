@@ -43,14 +43,19 @@ INSTALLED_APPS = [
     'backend.apps.BackendConfig',
     'rest_framework',
     'django_rest_passwordreset',
+    'drf_spectacular',
     'rest_framework.authtoken',
+    'easy_thumbnails',
     
     # alluth
+    'baton',
+    'django.contrib.admin',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.vk'
+    'baton.autodiscover',
 ]
 
 MIDDLEWARE = [
@@ -156,6 +161,8 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 40,
 
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',
@@ -174,7 +181,7 @@ REST_FRAMEWORK = {
         'user': '600/minute',
         'anon': '60/minute',
     },
-    
+
     'TEST_REQUEST_DEFAULT_FORMAT': 'json',
 }
 
