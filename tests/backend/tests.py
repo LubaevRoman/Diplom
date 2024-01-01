@@ -7,12 +7,12 @@ from backend.models import User
 @pytest.mark.django_db
 def test_user_create(api_client):
     some_user = {
-        "first_name": "Oleg",
-        "last_name": "Petrov",
-        "email": "olegpetrov@gmail.com",
-        "password": "13656vbvffvf",
-        "company": "Google",
-        "position": "Engineer"
+        "first_name": "Roman",
+        "last_name": "Lubaev",
+        "email": "Lex_lre@mail.ru",
+        "password": "dfgsdfgdsf",
+        "company": "Company1",
+        "position": "Position1"
     }
 
     url = reverse("backend:user-register")
@@ -73,11 +73,11 @@ def test_user_details(api_client, user_factory):
     assert resp.status_code == HTTP_200_OK
     resp = api_client.post(url, data={
         "first_name": "Igor",
-        "last_name": "Pikov",
-        "email": "igor24@mail.ru",
-        "password": "fjsldkfjlksd",
+        "last_name": "Ivanov",
+        "email": "LLLLLL24@mail.ru",
+        "password": "sdhshsbfh",
         "company": "Company1",
-        "position": "Position1"
+        "position": "Position2"
     })
     assert resp.status_code == HTTP_200_OK
 
